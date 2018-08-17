@@ -8,24 +8,80 @@
 
 #import "ViewController.h"
 #import "MyScene.h"
+#import "GameOverViewController.h"
 
-@implementation ViewController
+bool isFirstLoad = true;
+
+@implementation ViewController{
+    MyScene * scene;
+    ADBannerView * adBannerView;
+    GADInterstitial *interstitial;
+}
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    adBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, -50, 200, 30)];
+    adBannerView.delegate = self;
+    adBannerView.alpha = 1.0f;
+    [self.view addSubview:adBannerView];
+    
+    
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    
+    interstitial = [self createAndLoadInterstitial];
+//    interstitial = [[GADInterstitial alloc] init];
+//    interstitial.adUnitID = @"ca-app-pub-3940256099942544/4411468910";
+    
+//    GADRequest *request = [GADRequest request];
+    // Requests test ads on simulators.
+//    request.testDevices = @[ GAD_SIMULATOR_ID ];
+//    [interstitial loadRequest:request];
 
+    
+//    [super viewDidLoad];
+}
+
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
+    if(isFirstLoad){
+        isFirstLoad = false;
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+//    skView.showsFPS = YES;
+//    skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
+    scene = [MyScene sceneWithSize:skView.frame.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
     [skView presentScene:scene];
+    
+//    self.canDisplayBannerAds = YES;
+
+    
+    
+//    self.bannerView = bannerView;
+    
+    
+    
+    scene.onGameOver = ^(int gameScore){
+        [self showScore:gameScore];
+    };
+        
+    scene.showAdmob = ^(){
+        [self showAdmob];
+    };
+        
+    }
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+//    [adBannerView removeFromSuperview];
+//    adBannerView.delegate = nil;
+//    adBannerView = nil;
 }
 
 - (BOOL)shouldAutorotate
@@ -46,6 +102,68 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void)showScore:(int)gameScore{
+    GameOverViewController* gameOverDialogViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameOverViewController"];
+    gameOverDialogViewController.delegate = self;
+    
+    gameOverDialogViewController.gameScore = gameScore;
+    
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self.navigationController presentViewController:gameOverDialogViewController animated:YES completion:^{
+    }];
+}
+
+-(void)showAdmob{
+    if ([interstitial isReady]) {
+        [interstitial presentFromRootViewController:self];
+    }
+}
+
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    [self layoutAnimated:true];
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+//    [adBannerView removeFromSuperview];
+//    adBannerView.delegate = nil;
+//    adBannerView = nil;
+    [self layoutAnimated:true];
+}
+
+- (void)layoutAnimated:(BOOL)animated
+{
+    CGRect contentFrame = self.view.bounds;
+    CGRect bannerFrame = adBannerView.frame;
+    if (adBannerView.bannerLoaded)
+    {
+//        contentFrame.size.height -= adBannerView.frame.size.height;
+        contentFrame.size.height = 0;
+        bannerFrame.origin.y = contentFrame.size.height;
+    } else {
+        bannerFrame.origin.y = contentFrame.size.height;
+    }
+    
+    [UIView animateWithDuration:animated ? 0.25 : 0.0 animations:^{
+        adBannerView.frame = contentFrame;
+        [adBannerView layoutIfNeeded];
+        adBannerView.frame = bannerFrame;
+    }];
+}
+
+
+- (GADInterstitial *)createAndLoadInterstitial {
+    GADInterstitial *interstitial = [[GADInterstitial alloc] init];
+    interstitial.adUnitID = @"ca-app-pub-2566742856382887/8779587052";
+    interstitial.delegate = self;
+    [interstitial loadRequest:[GADRequest request]];
+    return interstitial;
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
+    self->interstitial = [self createAndLoadInterstitial];
 }
 
 @end
