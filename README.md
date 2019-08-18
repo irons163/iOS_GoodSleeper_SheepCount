@@ -5,6 +5,9 @@
 
 - iOS_GoodSleeper_SheepCount is a game in iOS.
 
+## Important!
+### You can use the codes what you want, but the images not.
+
 ## Description
 
 - This game is cute style, and it helps you sleep well. Have a good sleep time.
