@@ -354,6 +354,7 @@
 				TargetAttributes = {
 					B5CF62F11AD51F9E00D34155 = {
 						DevelopmentTeam = T6VV6T753H;
+						ProvisioningStyle = Automatic;
 					};
 					B5CF63191AD51F9E00D34155 = {
 						TestTargetID = B5CF62F11AD51F9E00D34155;
@@ -365,6 +366,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -581,8 +583,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T6VV6T753H;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -592,6 +597,7 @@
 				INFOPLIST_FILE = "Try_Sheep_Count/GoodSleeperCountingSheep-Info.plist";
 				PRODUCT_NAME = GoodSleeperCountingSheep;
 				PROVISIONING_PROFILE = "a3b406b7-236a-4ac3-bb8e-5abcd431b52a";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -602,8 +608,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T6VV6T753H;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -613,6 +622,7 @@
 				INFOPLIST_FILE = "Try_Sheep_Count/GoodSleeperCountingSheep-Info.plist";
 				PRODUCT_NAME = GoodSleeperCountingSheep;
 				PROVISIONING_PROFILE = "a3b406b7-236a-4ac3-bb8e-5abcd431b52a";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};

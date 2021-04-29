@@ -9,18 +9,16 @@
 #import "MyGameOverScene.h"
 #import "TextureHelper.h"
 
-@implementation MyGameOverScene{
+@implementation MyGameOverScene {
     SKSpriteNode * continueBtn;
     SKSpriteNode * leaveBtn;
     SKSpriteNode * sheepStandNode;
 }
 
-
 int ccount;
 
--(instancetype)initWithSize:(CGSize)size{
+- (instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        
         SKSpriteNode * backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"bg02"];
         
         backgroundNode.size = self.frame.size;
@@ -37,15 +35,6 @@ int ccount;
         
         [self addChild:continueBtn];
         
-//        leaveBtn = [SKSpriteNode spriteNodeWithImageNamed:@"sheep_text3"];
-//        
-//        leaveBtn.anchorPoint = CGPointMake(0, 0);
-//        leaveBtn.size = CGSizeMake(self.frame.size.width/3.0, self.frame.size.height/5.0);
-//        leaveBtn.position = CGPointMake(self.size.width - leaveBtn.size.width, 0);
-//        
-//        [self addChild:leaveBtn];
-        
-
         sheepStandNode = [SKSpriteNode spriteNodeWithImageNamed:@"sheep1"];
         
         sheepStandNode.anchorPoint = CGPointMake(0.5, 0.5);
@@ -57,18 +46,10 @@ int ccount;
     return self;
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-    
-//    if(!isGameRun)
-//        return;
-    
-    /* Called before each frame is rendered */
-    // 获取时间增量
-    // 如果我们运行的每秒帧数低于60，我们依然希望一切和每秒60帧移动的位移相同
+- (void)update:(CFTimeInterval)currentTime {
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
     self.lastUpdateTimeInterval = currentTime;
-    if (timeSinceLast > 1) { // 如果上次更新后得时间增量大于1秒
+    if (timeSinceLast > 1) {
         timeSinceLast = 1.0 / 60.0;
         self.lastUpdateTimeInterval = currentTime;
     }
@@ -81,35 +62,17 @@ int ccount;
     
     if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
-        
         ccount++;
-        
-        if(ccount==10)    {
-            
-            
-            int continueAttackCounter = 0;
-            
-            int r = arc4random_uniform(40);
-            
-        }
-        
-    }else if(self.lastSpawnTimeInterval > 0.3){
-        
     }
-    
-    
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch * touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     
-    if (CGRectContainsPoint(continueBtn.calculateAccumulatedFrame, location))
-    {
+    if (CGRectContainsPoint(continueBtn.calculateAccumulatedFrame, location)) {
         [self.view presentScene:self.periousScene];
         [self.delegate startTimer];
-    }else if(CGRectContainsPoint(leaveBtn.calculateAccumulatedFrame, location)){
-//        [[Appl sharedApplication] ];
     }
 }
 

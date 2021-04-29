@@ -9,9 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "MyScene.h"
 
-@interface MyGameScoreScene : SKScene{
-//    id<returnToMySceneDelegate> delegate;
-}
+@interface MyGameScoreScene : SKScene
 
 @property (nonatomic) SKScene * periousScene;
 @property (nonatomic) int sheepGameScore;

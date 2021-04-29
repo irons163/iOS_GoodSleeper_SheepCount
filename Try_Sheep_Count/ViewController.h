@@ -9,13 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import "GameOverViewController.h"
-//#import "GADInterstitial.h"
-//#import <GoogleMobileAds/GADInterstitial.h>
-//#import <GoogleMobileAds/GADBannerView.h>
-//#import "GADInterstitial.h"
 @import GoogleMobileAds;
 @import iAd;
-//@import GoogleMobileAds;
 
 @interface ViewController : UIViewController<BviewControllerDelegate,ADBannerViewDelegate, GADInterstitialDelegate>
 

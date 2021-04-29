@@ -25,20 +25,8 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    self.gameLevelTensDigitalLabel.image = [TextureHelper timeTextures][0];
-    
-//    self.gameLevelTensDigitalLabel.image = [self getNumberImage:(self.gameLevel+1)/10];
-//    
-//    self.gameLevelSingleDigital.image = [self getNumberImage:(self.gameLevel+1)%10];
-//    
-//    self.gameTimeMinuteTensDIgitalLabel.image = [self getNumberImage:self.gameTime/60/10];
-//    self.gameTimeMinuteSingleDigitalLabel.image = [self getNumberImage:self.gameTime/60%10];
-//    self.gameTimeSecondTensDigitalLabel.image = [self getNumberImage:self.gameTime%60/10];
-//    self.gameTimeSecondSingleDigitalLabel.image = [self getNumberImage:self.gameTime%60%10];
     
     self.gameTimeMinuteTensDIgitalLabel.image = [self getNumberImage:self.gameScore/60/10];
     self.gameTimeMinuteSingleDigitalLabel.image = [self getNumberImage:self.gameScore/60%10];
@@ -46,35 +34,19 @@
     self.gameTimeSecondSingleDigitalLabel.image = [self getNumberImage:self.gameScore%60%10];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)restartGameClick:(id)sender {
     [self dismissViewControllerAnimated:true completion:^{
-//        [self ];
-//        [self.delegate BviewcontrollerDidTapButton];
         [self.delegate BviewcontrollerDidTapButton];
     }];
 }
 
 - (IBAction)backToMainMenuClick:(id)sender {
     [self dismissViewControllerAnimated:true completion:^{
-        //        [self ];
-        //        [self.delegate BviewcontrollerDidTapButton];
         [self.delegate BviewcontrollerDidTapBackToMenuButton];
     }];
 }
@@ -115,6 +87,5 @@
     }
     return image;
 }
-
 
 @end

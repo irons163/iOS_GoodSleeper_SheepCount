@@ -12,14 +12,13 @@
 
 bool isFirstLoad = true;
 
-@implementation ViewController{
+@implementation ViewController {
     MyScene * scene;
     ADBannerView * adBannerView;
     GADInterstitial *interstitial;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     adBannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, -50, 200, 30)];
     adBannerView.delegate = self;
     adBannerView.alpha = 1.0f;
@@ -28,69 +27,40 @@ bool isFirstLoad = true;
     
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     
-    interstitial = [self createAndLoadInterstitial];
-//    interstitial = [[GADInterstitial alloc] init];
-//    interstitial.adUnitID = @"ca-app-pub-3940256099942544/4411468910";
-    
-//    GADRequest *request = [GADRequest request];
-    // Requests test ads on simulators.
-//    request.testDevices = @[ GAD_SIMULATOR_ID ];
-//    [interstitial loadRequest:request];
-
-    
-//    [super viewDidLoad];
+//    interstitial = [self createAndLoadInterstitial];
 }
 
--(void)viewWillLayoutSubviews{
+- (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
     if(isFirstLoad){
         isFirstLoad = false;
-    // Configure the view.
-    SKView * skView = (SKView *)self.view;
-//    skView.showsFPS = YES;
-//    skView.showsNodeCount = YES;
-    
-    // Create and configure the scene.
-    scene = [MyScene sceneWithSize:skView.frame.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
-    // Present the scene.
-    [skView presentScene:scene];
-    
-//    self.canDisplayBannerAds = YES;
-
-    
-    
-//    self.bannerView = bannerView;
-    
-    
-    
-    scene.onGameOver = ^(int gameScore){
-        [self showScore:gameScore];
-    };
         
-    scene.showAdmob = ^(){
-        [self showAdmob];
-    };
+        SKView * skView = (SKView *)self.view;
+        scene = [MyScene sceneWithSize:skView.frame.size];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        // Present the scene.
+        [skView presentScene:scene];
+        
+        scene.onGameOver = ^(int gameScore){
+            [self showScore:gameScore];
+        };
+        
+        scene.showAdmob = ^(){
+            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self showAdmob];
+            });
+        };
         
     }
 }
 
-- (void) viewWillDisappear:(BOOL)animated
-{
-//    [adBannerView removeFromSuperview];
-//    adBannerView.delegate = nil;
-//    adBannerView = nil;
-}
-
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate {
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
+- (NSUInteger)supportedInterfaceOrientations {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     } else {
@@ -98,13 +68,12 @@ bool isFirstLoad = true;
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
 
--(void)showScore:(int)gameScore{
+- (void)showScore:(int)gameScore {
     GameOverViewController* gameOverDialogViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameOverViewController"];
     gameOverDialogViewController.delegate = self;
     
@@ -116,30 +85,24 @@ bool isFirstLoad = true;
     }];
 }
 
--(void)showAdmob{
+- (void)showAdmob {
     if ([interstitial isReady]) {
         [interstitial presentFromRootViewController:self];
     }
 }
 
--(void)bannerViewDidLoadAd:(ADBannerView *)banner{
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
     [self layoutAnimated:true];
 }
 
--(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
-//    [adBannerView removeFromSuperview];
-//    adBannerView.delegate = nil;
-//    adBannerView = nil;
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     [self layoutAnimated:true];
 }
 
-- (void)layoutAnimated:(BOOL)animated
-{
+- (void)layoutAnimated:(BOOL)animated {
     CGRect contentFrame = self.view.bounds;
     CGRect bannerFrame = adBannerView.frame;
-    if (adBannerView.bannerLoaded)
-    {
-//        contentFrame.size.height -= adBannerView.frame.size.height;
+    if (adBannerView.bannerLoaded) {
         contentFrame.size.height = 0;
         bannerFrame.origin.y = contentFrame.size.height;
     } else {

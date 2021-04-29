@@ -10,14 +10,13 @@
 #import "TextureHelper.h"
 #import "MyGameOverScene.h"
 
-@implementation MyGameScoreScene{
+@implementation MyGameScoreScene {
     SKSpriteNode * gamePointSingleNode, *gamePointTenNode, *gamePointHunNode, *gamePointTHUNode;
     SKSpriteNode * sheepSleepNode;
 }
 
--(instancetype)initWithSize:(CGSize)size{
+- (instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        
         SKSpriteNode * backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"bg02"];
         
         backgroundNode.size = self.frame.size;
@@ -25,8 +24,6 @@
         backgroundNode.position = CGPointMake(0, 0);
         
         [self addChild:backgroundNode];
-        
-
         
         SKSpriteNode * cumulative = [SKSpriteNode spriteNodeWithImageNamed:@"cumulative"];
         cumulative.size = CGSizeMake(400, 80);
@@ -56,10 +53,8 @@
     return self;
 }
 
--(void)update:(NSTimeInterval)currentTime{
-    
+- (void)update:(NSTimeInterval)currentTime {
     if(self.updateSheepGameScore){
-        
         int gamePointNodeWH = 60;
         
         int gamePointX = self.frame.size.width/3;
@@ -69,13 +64,11 @@
         gamePointSingleNode.anchorPoint = CGPointMake(0, 0);
         gamePointSingleNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointSingleNode.position = CGPointMake(gamePointX, gamePointY);
-        //        gamePointSingleNode.zPosition = backgroundLayerZPosition;
         
         gamePointTenNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore)/10%10]];
         gamePointTenNode.anchorPoint = CGPointMake(0, 0);
         gamePointTenNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointTenNode.position = CGPointMake(gamePointX - gamePointNodeWH, gamePointY);
-        //        gamePointTenNode.zPosition = backgroundLayerZPosition;
         
         gamePointHunNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore)/100%10]];
         gamePointHunNode.anchorPoint = CGPointMake(0, 0);
@@ -94,12 +87,9 @@
         
         self.updateSheepGameScore = false;
     }
-    
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-//    f
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     ((MyScene*)self.periousScene).showAdmob();
     
     MyGameOverScene * myGameOverScene = [MyGameOverScene sceneWithSize:self.view.frame.size];
@@ -113,7 +103,7 @@
     [self removeFromParent];
 }
 
--(SKTexture*)getTimeTexture:(int)time{
+- (SKTexture*)getTimeTexture:(int)time {
     SKTexture* texture;
     switch (time) {
         case 0:
@@ -149,6 +139,5 @@
     }
     return texture;
 }
-
 
 @end

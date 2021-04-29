@@ -1,4 +1,4 @@
- //
+//
 //  MyScene.m
 //  Try_Sheep_Count
 //
@@ -19,7 +19,7 @@ bool touching = false;
 
 #define DEFAULT_SHEEP_LEFT_MAX  6
 
-@implementation MyScene{
+@implementation MyScene {
     NSMutableArray * sheepArray;
     NSMutableArray * sheepArrayLeft;
     SKSpriteNode * gamePointSingleNode, *gamePointTenNode, *gamePointHunNode, *gamePointTHUNode;
@@ -34,13 +34,8 @@ bool touching = false;
     double periousTime;
 }
 
-
--(id)initWithSize:(CGSize)size {    
+- (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
-        
-//        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
         sheepLeftMax = DEFAULT_SHEEP_LEFT_MAX;
         isSheepTouchable = true;
         
@@ -56,28 +51,21 @@ bool touching = false;
         backgroundNode.size = self.frame.size;
         backgroundNode.anchorPoint = CGPointMake(0, 0);
         backgroundNode.position = CGPointMake(0, 0);
-        
-        
         [self addChild:backgroundNode];
         
         int gamePointNodeWH = 30;
-        
         gamePointX = self.frame.size.width/4;
         int gamePointY = self.frame.size.height*6/8.0;
-//        int gamePointY = self.frame.size.height - 50;
         
         gamePointSingleNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:sheepGameScore%10]];
         gamePointSingleNode.anchorPoint = CGPointMake(0, 0);
         gamePointSingleNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointSingleNode.position = CGPointMake(gamePointX, gamePointY);
-//        gamePointSingleNode.zPosition = backgroundLayerZPosition;
         
         gamePointTenNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(sheepGameScore)/10]];
         gamePointTenNode.anchorPoint = CGPointMake(0, 0);
         gamePointTenNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointTenNode.position = CGPointMake(gamePointX - gamePointNodeWH, gamePointY);
-//        gamePointTenNode.zPosition = backgroundLayerZPosition;
-        
         
         gamePointHunNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(sheepGameScore)/100]];
         gamePointHunNode.anchorPoint = CGPointMake(0, 0);
@@ -94,53 +82,12 @@ bool touching = false;
         [self addChild:gamePointHunNode];
         [self addChild:gamePointTHUNode];
         
-//        if(sheepGameScore < 10){
-//            gamePointSingleNode.hidden = false;
-//            gamePointTenNode.hidden = true;
-//            gamePointHunNode.hidden = true;
-//            gamePointTHUNode.hidden = true;
-//            
-//            gamePointSingleNode.texture = [self getTimeTexture:sheepGameScore%10];
-//        }else if(sheepGameScore < 100){
-//            gamePointSingleNode.hidden = false;
-//            gamePointTenNode.hidden = false;
-//            gamePointHunNode.hidden = true;
-//            gamePointTHUNode.hidden = true;
-//            
-//            gamePointSingleNode.texture = [self getTimeTexture:sheepGameScore%10];
-//            gamePointTenNode.texture = [self getTimeTexture:sheepGameScore/10];
-//        }else if(sheepGameScore < 1000){
-//            gamePointSingleNode.hidden = false;
-//            gamePointTenNode.hidden = false;
-//            gamePointHunNode.hidden = false;
-//            gamePointTHUNode.hidden = true;
-//            
-//            gamePointSingleNode.texture = [self getTimeTexture:sheepGameScore%10];
-//            gamePointTenNode.texture = [self getTimeTexture:sheepGameScore/10%10];
-//            gamePointHunNode.texture = [self getTimeTexture:sheepGameScore/100];
-//        }else{
-//            gamePointSingleNode.hidden = false;
-//            gamePointTenNode.hidden = false;
-//            gamePointHunNode.hidden = false;
-//            gamePointTHUNode.hidden = false;
-//            
-//            gamePointSingleNode.texture = [self getTimeTexture:sheepGameScore%10];
-//            gamePointTenNode.texture = [self getTimeTexture:sheepGameScore/10%10];
-//            gamePointHunNode.texture = [self getTimeTexture:sheepGameScore/100%10];
-//            gamePointTHUNode.texture = [self getTimeTexture:sheepGameScore/1000%10];
-//        }
-        
         sheepTextNode = [SKSpriteNode spriteNodeWithImageNamed:@"sheep_text"];
-        
         sheepTextNode.anchorPoint = CGPointMake(0, 0);
-        
         sheepTextNode.size = CGSizeMake(gamePointNodeWH*4.2, gamePointNodeWH*1.5);
         sheepTextNode.position = CGPointMake(gamePointX - gamePointSingleNode.size.width*3, gamePointY - gamePointSingleNode.size.height - 10);
         
         [self addChild:sheepTextNode];
-        
-        int screenHeight = self.frame.size.height;
-        int screenWidth = self.frame.size.width;
         
         barHeight = self.frame.size.height*4/5.0;
         
@@ -163,22 +110,14 @@ bool touching = false;
     return self;
 }
 
--(void)sheepMove:(SKSpriteNode*)sheep{
-//    sheep.position = CGPointMake(self.frame.size.width, 200);
-    
+- (void)sheepMove:(SKSpriteNode*)sheep {
     SKAction * actionMove = [SKAction moveTo:CGPointMake(10, 200) duration:3];
-    
-//    int randomx = ra
-    
     actionMove = [SKAction moveBy:CGVectorMake(sheep.position.x-50, sheep.position.y-50) duration:2];
-    
     actionMove = [SKAction moveByX:-50 y:-50 duration:2];
-    
     [sheep runAction:actionMove];
 }
 
--(void)sheepWalkL:(SKSpriteNode*)sheep{
-    
+- (void)sheepWalkL:(SKSpriteNode*)sheep {
     int x = arc4random_uniform(161)-80;
     int y = arc4random_uniform(81)-40;
     
@@ -225,13 +164,10 @@ bool touching = false;
     }];
     
     SKAction * actionMove = [SKAction moveByX:x y:y duration:2];
-    
-    //    [sheep runAction:[SKAction sequence:@[actionMove, end]]];
     [sheep runAction:[SKAction group:@[[SKAction sequence:@[actionMove, end]], sheepAnimation]]];
 }
 
--(void)sheepWalkR:(SKSpriteNode*)sheep{
-    
+- (void)sheepWalkR:(SKSpriteNode*)sheep {
     int x = arc4random_uniform(161)-80;
     int y = arc4random_uniform(81)-40;
     
@@ -264,7 +200,7 @@ bool touching = false;
     sheepAnimation = [SKAction repeatActionForever:sheepAnimation];
     
     SKAction * delayAction = [SKAction waitForDuration:1.0];
-   
+    
     SKAction * randomWalk = [SKAction runBlock:^{
         [self sheepWalkR:sheep];
     }];
@@ -276,31 +212,11 @@ bool touching = false;
     }];
     
     SKAction * actionMove = [SKAction moveByX:x y:y duration:2];
-    
-//    [sheep runAction:[SKAction sequence:@[actionMove, end]]];
     [sheep runAction:[SKAction group:@[[SKAction sequence:@[actionMove, end]], sheepAnimation]]];
 }
 
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-//    for (UITouch *touch in touches) {
-//        CGPoint location = [touch locationInNode:self];
-//        
-//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-//        
-//        sprite.position = location;
-//        
-//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-//        
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-//        
-//        [self addChild:sprite];
-//    }
-    
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [timer invalidate];
-    
     [self startTimer];
     
     UITouch * touch = [touches anyObject];
@@ -331,21 +247,16 @@ bool touching = false;
             sheep.texture = [SKTexture textureWithImageNamed:@"sheep_jump1"];
             sheep.xScale = 1;
             
-            SKAction* upAction = [SKAction moveByX:0 y:50 duration:0.5];
+            SKAction *upAction = [SKAction moveByX:0 y:50 duration:0.5];
             upAction.timingMode = SKActionTimingEaseOut;
-            SKAction* downAction = [SKAction moveByX:0 y:-50 duration: 0.5]; downAction.timingMode = SKActionTimingEaseIn;
-            // 3
-            //        topNode.runAction(SKAction.sequence(
-            //                                            [upAction, downAction, SKAction.removeFromParent()]))
+            SKAction *downAction = [SKAction moveByX:0 y:-50 duration: 0.5]; downAction.timingMode = SKActionTimingEaseIn;
             
-            SKAction* upEnd = [SKAction runBlock:^{
+            SKAction *upEnd = [SKAction runBlock:^{
                 sheep.texture = [SKTexture textureWithImageNamed:@"sheep_jump3"];
             }];
             
-            SKAction* horzAction = [SKAction moveToX:50 duration:1.0];
-            
-            SKAction * end;
-            
+            SKAction *horzAction = [SKAction moveToX:50 duration:1.0];
+            SKAction *end;
             
             double currentTime = [[NSDate date] timeIntervalSince1970]*1000;
             
@@ -365,16 +276,12 @@ bool touching = false;
                             [removeSheep removeFromParent];
                         }];
                         [removeSheep runAction:[SKAction sequence:@[removeAction, removeEnd]]];
-                        
                     }
                     [self changeGamePoint];
                     [self sheepWalkL:sheep];
                 }];
-            }else{
-                
+            } else {
                 if(currentTime - periousTime < 200 && sheepArrayLeft.count >= sheepLeftMax){
-                    
-                        
                     NSLog(@"currentTime:%lf, periousTime:%lf",currentTime,periousTime);
                     
                     end = [SKAction runBlock:^{
@@ -384,39 +291,34 @@ bool touching = false;
                         [self changeGamePoint];
                         
                         if(isSheepTouchable){
-
                             NSLog(@"currentTime:%lf, periousTime:%lf",currentTime,periousTime);
-
+                            
                             sheep.texture = [SKTexture textureWithImageNamed:@"sheep_angry01"];
                             SKAction * sheepBumpToScreen = [SKAction scaleTo:8 duration:2];
-                            //                        sheep.anchorPoint = CGPointMake(0.5, 0.5);
+                            
                             SKAction * bumpEnd = [SKAction runBlock:^{
                                 isSheepTouchable = true;
                                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                                 [sheep removeFromParent];
                                 [sheepArrayLeft removeObject:sheep];
                             }];
-
+                            
                             sheep.anchorPoint = CGPointMake(0.5, 0.5);
                             sheep.zPosition = 2;
-
+                            
                             int randomMoveX = arc4random_uniform(self.frame.size.width/4.0) + self.frame.size.width/3.0;
-
+                            
                             SKAction * bumpMove = [SKAction moveTo:CGPointMake((self.position.x + randomMoveX), sheep.position.y) duration:2];
-
+                            
                             isSheepTouchable = false;
-
+                            
                             [sheep removeAllActions];
                             [sheepArrayLeft removeObject:sheep];
-
+                            
                             [sheep runAction:[SKAction sequence:@[[SKAction group:@[sheepBumpToScreen, bumpMove]], bumpEnd]]];
-
+                            
                             return;
-                        }else{
-
                         }
-                        
-                        
                         
                         SKTexture * texture = [SKTexture textureWithImageNamed:@"sheep_faildown01"];
                         SKTexture * texture2 = [SKTexture textureWithImageNamed:@"sheep_faildown02"];
@@ -425,8 +327,6 @@ bool touching = false;
                         NSArray * nsArray = @[texture, texture2, texture3];
                         
                         SKAction* fallDownAnimation = [SKAction repeatAction:[SKAction animateWithTextures:nsArray timePerFrame:0.1] count:5];
-                        
-                        
                         
                         SKAction* fallDwonEnd;
                         if(sheepArrayLeft.count > sheepLeftMax){
@@ -437,68 +337,22 @@ bool touching = false;
                             SKAction* removeAction = [SKAction moveTo:CGPointMake(-removeSheep.size.width, removeSheep.position.y) duration:2];
                             SKAction* removeEnd = [SKAction runBlock:^{
                                 [removeSheep removeFromParent];
-                                
                             }];
                             
                             [removeSheep runAction:[SKAction sequence:@[removeAction, removeEnd]]];
-                            
-                            //                        fallDwonEnd = [SKAction runBlock:^{
-                            //                            [removeSheep runAction:[SKAction sequence:@[removeAction, removeEnd]]];
-                            //                        }];
-                        }else{
-                            
                         }
                         
                         fallDwonEnd = [SKAction runBlock:^{
                             [self sheepWalkL:sheep];
                         }];
                         [sheep runAction:[SKAction sequence:@[fallDownAnimation, fallDwonEnd]]];
-                        
                     }];
-                    
-                }else{
-                    
+                } else {
                     end = [SKAction runBlock:^{
                         [sheep removeAllActions];
                         [sheepArrayLeft addObject:sheep];
                         
                         [self changeGamePoint];
-                        
-                        //                    if (sheepArrayLeft.count > 10) {
-//                        if(currentTime - periousTime < 5 && sheepArrayLeft.count > sheepLeftMax&& isSheepTouchable){
-//                            
-//                            NSLog(@"currentTime:%lf, periousTime:%lf",currentTime,periousTime);
-//                            
-//                            sheep.texture = [SKTexture textureWithImageNamed:@"sheep_angry01"];
-//                            SKAction * sheepBumpToScreen = [SKAction scaleTo:8 duration:2];
-//                            //                        sheep.anchorPoint = CGPointMake(0.5, 0.5);
-//                            SKAction * bumpEnd = [SKAction runBlock:^{
-//                                isSheepTouchable = true;
-//                                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-//                                [sheep removeFromParent];
-//                                [sheepArrayLeft removeObject:sheep];
-//                            }];
-//                            
-//                            sheep.anchorPoint = CGPointMake(0.5, 0.5);
-//                            sheep.zPosition = 2;
-//                            
-//                            int randomMoveX = arc4random_uniform(self.frame.size.width/4.0) + self.frame.size.width/3.0;
-//                            
-//                            SKAction * bumpMove = [SKAction moveTo:CGPointMake((self.position.x + randomMoveX), sheep.position.y) duration:2];
-//                            
-//                            isSheepTouchable = false;
-//                            
-//                            [sheep removeAllActions];
-//                            [sheepArrayLeft removeObject:sheep];
-//                            
-//                            [sheep runAction:[SKAction sequence:@[[SKAction group:@[sheepBumpToScreen, bumpMove]], bumpEnd]]];
-//                            
-//                            return;
-//                        }else{
-//                            
-//                        }
-                        
-                        
                         
                         SKTexture * texture = [SKTexture textureWithImageNamed:@"sheep_faildown01"];
                         SKTexture * texture2 = [SKTexture textureWithImageNamed:@"sheep_faildown02"];
@@ -538,37 +392,25 @@ bool touching = false;
                         
                     }];
                 }
-                
             }
             
             periousTime = currentTime;
             
-            
             [sheep runAction:[SKAction group:@[[SKAction sequence:@[upAction, upEnd, downAction, end]], horzAction]]];
-            
-            
-            
             break;
-            
         }
-
     }
     
     touching = false;
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-    
+- (void)update:(CFTimeInterval)currentTime {
     if(!isGameRun)
         return;
     
-    /* Called before each frame is rendered */
-    // 获取时间增量
-    // 如果我们运行的每秒帧数低于60，我们依然希望一切和每秒60帧移动的位移相同
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
     self.lastUpdateTimeInterval = currentTime;
-    if (timeSinceLast > 1) { // 如果上次更新后得时间增量大于1秒
+    if (timeSinceLast > 1) {
         timeSinceLast = 1.0 / 60.0;
         self.lastUpdateTimeInterval = currentTime;
     }
@@ -581,25 +423,15 @@ bool touching = false;
     
     if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
-        
         ccount++;
         
-        if(ccount==10)    {
-            
-            
-            int continueAttackCounter = 0;
-            
-            int r = arc4random_uniform(40);
-            
+        if (ccount==10) {
             ccount = 0;
         }
- 
-    }else if(self.lastSpawnTimeInterval > 0.3){
-        
     }
 }
 
--(SKSpriteNode*)createSheep{
+- (SKSpriteNode*)createSheep {
     int randomSheepInitGoToX = arc4random_uniform(self.frame.size.width/2)+bar.position.x + bar.size.width;
     int randomSheepInitY = arc4random_uniform(self.frame.size.height/2) + 30;
     
@@ -631,11 +463,7 @@ bool touching = false;
     return sheep;
 }
 
--(void)checkAndSheepBumpToScreen{
-    
-}
-
--(void)changeGamePoint{
+- (void)changeGamePoint {
     sheepGameScore++;
     
     gamePointSingleNode.texture = [self getTimeTexture:sheepGameScore%10];
@@ -647,22 +475,12 @@ bool touching = false;
     gamePointTHUNode.texture = [self getTimeTexture:(sheepGameScore)/1000%10];
 }
 
--(void)showScore{
-//    self.onGameOver(sheepGameScore);
+- (void)showScore {
     [self moveTrans];
     return;
-
 }
 
--(void)moveTrans{
-//    MyGameOverScene * myGameOverScene = [MyGameOverScene sceneWithSize:self.view.bounds.size];
-//    myGameOverScene.scaleMode = self.scaleMode;
-//    myGameOverScene.periousScene = self;
-//    
-//    SKTransition * trans = [SKTransition flipHorizontalWithDuration:0.5];
-//    
-//    [self.view presentScene:myGameOverScene transition:trans];
-    
+- (void)moveTrans {
     MyGameScoreScene * myGameScoreScene = [MyGameScoreScene sceneWithSize:self.view.frame.size];
     myGameScoreScene.scaleMode = self.scaleMode;
     myGameScoreScene.periousScene = self;
@@ -675,7 +493,7 @@ bool touching = false;
     [self.view presentScene:myGameScoreScene transition:trans];
 }
 
--(void)startTimer{
+- (void)startTimer {
     timer =  [NSTimer scheduledTimerWithTimeInterval:15.0
                                               target:self
                                             selector:@selector(showScore)
@@ -683,7 +501,7 @@ bool touching = false;
                                              repeats:NO];
 }
 
--(SKTexture*)getTimeTexture:(int)time{
+- (SKTexture*)getTimeTexture:(int)time {
     SKTexture* texture;
     switch (time) {
         case 0:
@@ -716,9 +534,6 @@ bool touching = false;
         case 9:
             texture = [TextureHelper timeTextures][9];
             break;
-//        default:
-//            texture = [self getTimeTexture:time/10];
-//            break;
     }
     return texture;
 }
