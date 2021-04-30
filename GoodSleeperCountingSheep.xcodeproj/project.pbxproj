@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B57796121B10339600ABE278 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57796111B10339500ABE278 /* GoogleMobileAds.framework */; };
+		3BAB9CE3B91CE11938D6223C /* Pods_GoodSleeperCountingSheepTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CDCF55E2E5D39B339321B8 /* Pods_GoodSleeperCountingSheepTests.framework */; };
+		61E8EC9608588EBC5F700273 /* Pods_GoodSleeperCountingSheep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C09DFF6C09E889A422AB5F /* Pods_GoodSleeperCountingSheep.framework */; };
 		B580C3531AE5D88C006C31BC /* MyGameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B580C3521AE5D88C006C31BC /* MyGameOverScene.m */; };
 		B592A78D1AEFB8930014FC4C /* MyGameScoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B592A78C1AEFB8930014FC4C /* MyGameScoreScene.m */; };
 		B5CF62F61AD51F9E00D34155 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CF62F51AD51F9E00D34155 /* Foundation.framework */; };
@@ -81,7 +82,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B57796111B10339500ABE278 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		09CDCF55E2E5D39B339321B8 /* Pods_GoodSleeperCountingSheepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodSleeperCountingSheepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D49172A4C34ECF76A539121 /* Pods-GoodSleeperCountingSheepTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodSleeperCountingSheepTests.release.xcconfig"; path = "Target Support Files/Pods-GoodSleeperCountingSheepTests/Pods-GoodSleeperCountingSheepTests.release.xcconfig"; sourceTree = "<group>"; };
+		37C09DFF6C09E889A422AB5F /* Pods_GoodSleeperCountingSheep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodSleeperCountingSheep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38E309E08CBD328CF3CE1364 /* Pods-GoodSleeperCountingSheep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodSleeperCountingSheep.debug.xcconfig"; path = "Target Support Files/Pods-GoodSleeperCountingSheep/Pods-GoodSleeperCountingSheep.debug.xcconfig"; sourceTree = "<group>"; };
+		4B057E5E2DED067498489121 /* Pods-GoodSleeperCountingSheep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodSleeperCountingSheep.release.xcconfig"; path = "Target Support Files/Pods-GoodSleeperCountingSheep/Pods-GoodSleeperCountingSheep.release.xcconfig"; sourceTree = "<group>"; };
+		8FA23A3D04297C6BD9444361 /* Pods-GoodSleeperCountingSheepTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodSleeperCountingSheepTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodSleeperCountingSheepTests/Pods-GoodSleeperCountingSheepTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B580C3511AE5D88C006C31BC /* MyGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameOverScene.h; sourceTree = "<group>"; };
 		B580C3521AE5D88C006C31BC /* MyGameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGameOverScene.m; sourceTree = "<group>"; };
 		B592A78B1AEFB8930014FC4C /* MyGameScoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGameScoreScene.h; sourceTree = "<group>"; };
@@ -161,9 +167,9 @@
 			files = (
 				B5CF62F81AD51F9E00D34155 /* CoreGraphics.framework in Frameworks */,
 				B5CF62FA1AD51F9E00D34155 /* UIKit.framework in Frameworks */,
-				B57796121B10339600ABE278 /* GoogleMobileAds.framework in Frameworks */,
 				B5CF62FC1AD51F9E00D34155 /* SpriteKit.framework in Frameworks */,
 				B5CF62F61AD51F9E00D34155 /* Foundation.framework in Frameworks */,
+				61E8EC9608588EBC5F700273 /* Pods_GoodSleeperCountingSheep.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,20 +180,32 @@
 				B5CF631C1AD51F9E00D34155 /* XCTest.framework in Frameworks */,
 				B5CF631E1AD51F9E00D34155 /* UIKit.framework in Frameworks */,
 				B5CF631D1AD51F9E00D34155 /* Foundation.framework in Frameworks */,
+				3BAB9CE3B91CE11938D6223C /* Pods_GoodSleeperCountingSheepTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B54904AC9C26A92FB2E2BD91 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38E309E08CBD328CF3CE1364 /* Pods-GoodSleeperCountingSheep.debug.xcconfig */,
+				4B057E5E2DED067498489121 /* Pods-GoodSleeperCountingSheep.release.xcconfig */,
+				8FA23A3D04297C6BD9444361 /* Pods-GoodSleeperCountingSheepTests.debug.xcconfig */,
+				2D49172A4C34ECF76A539121 /* Pods-GoodSleeperCountingSheepTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B5CF62E91AD51F9E00D34155 = {
 			isa = PBXGroup;
 			children = (
-				B57796111B10339500ABE278 /* GoogleMobileAds.framework */,
 				B5CF62FD1AD51F9E00D34155 /* Try_Sheep_Count */,
 				B5CF63211AD51F9E00D34155 /* Try_Sheep_CountTests */,
 				B5CF62F41AD51F9E00D34155 /* Frameworks */,
 				B5CF62F31AD51F9E00D34155 /* Products */,
+				B54904AC9C26A92FB2E2BD91 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +226,8 @@
 				B5CF62F91AD51F9E00D34155 /* UIKit.framework */,
 				B5CF62FB1AD51F9E00D34155 /* SpriteKit.framework */,
 				B5CF631B1AD51F9E00D34155 /* XCTest.framework */,
+				37C09DFF6C09E889A422AB5F /* Pods_GoodSleeperCountingSheep.framework */,
+				09CDCF55E2E5D39B339321B8 /* Pods_GoodSleeperCountingSheepTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -312,9 +332,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5CF632B1AD51F9E00D34155 /* Build configuration list for PBXNativeTarget "GoodSleeperCountingSheep" */;
 			buildPhases = (
+				FB8AE056D3311628E0606068 /* [CP] Check Pods Manifest.lock */,
 				B5CF62EE1AD51F9E00D34155 /* Sources */,
 				B5CF62EF1AD51F9E00D34155 /* Frameworks */,
 				B5CF62F01AD51F9E00D34155 /* Resources */,
+				8D4478D02D5FAA17E9E9B271 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +351,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5CF632E1AD51F9E00D34155 /* Build configuration list for PBXNativeTarget "GoodSleeperCountingSheepTests" */;
 			buildPhases = (
+				F50B5C184C0284C2876932D4 /* [CP] Check Pods Manifest.lock */,
 				B5CF63161AD51F9E00D34155 /* Sources */,
 				B5CF63171AD51F9E00D34155 /* Frameworks */,
 				B5CF63181AD51F9E00D34155 /* Resources */,
@@ -354,7 +377,7 @@
 				TargetAttributes = {
 					B5CF62F11AD51F9E00D34155 = {
 						DevelopmentTeam = T6VV6T753H;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B5CF63191AD51F9E00D34155 = {
 						TestTargetID = B5CF62F11AD51F9E00D34155;
@@ -441,6 +464,73 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8D4478D02D5FAA17E9E9B271 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodSleeperCountingSheep/Pods-GoodSleeperCountingSheep-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodSleeperCountingSheep/Pods-GoodSleeperCountingSheep-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F50B5C184C0284C2876932D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodSleeperCountingSheepTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB8AE056D3311628E0606068 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodSleeperCountingSheep-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B5CF62EE1AD51F9E00D34155 /* Sources */ = {
@@ -580,12 +670,14 @@
 		};
 		B5CF632C1AD51F9E00D34155 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38E309E08CBD328CF3CE1364 /* Pods-GoodSleeperCountingSheep.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution: Wen Chuan Chang (T6VV6T753H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: Wen Chuan Chang (T6VV6T753H)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1.2104290;
 				DEVELOPMENT_TEAM = T6VV6T753H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -595,9 +687,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Try_Sheep_Count/GoodSleeperCountingSheep-Prefix.pch";
 				INFOPLIST_FILE = "Try_Sheep_Count/GoodSleeperCountingSheep-Info.plist";
+				MARKETING_VERSION = 1.1;
 				PRODUCT_NAME = GoodSleeperCountingSheep;
 				PROVISIONING_PROFILE = "a3b406b7-236a-4ac3-bb8e-5abcd431b52a";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Good Sleeper Counting Sheep Profile";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -605,12 +698,14 @@
 		};
 		B5CF632D1AD51F9E00D34155 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B057E5E2DED067498489121 /* Pods-GoodSleeperCountingSheep.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution: Wen Chuan Chang (T6VV6T753H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: Wen Chuan Chang (T6VV6T753H)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1.2104290;
 				DEVELOPMENT_TEAM = T6VV6T753H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -620,9 +715,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Try_Sheep_Count/GoodSleeperCountingSheep-Prefix.pch";
 				INFOPLIST_FILE = "Try_Sheep_Count/GoodSleeperCountingSheep-Info.plist";
+				MARKETING_VERSION = 1.1;
 				PRODUCT_NAME = GoodSleeperCountingSheep;
 				PROVISIONING_PROFILE = "a3b406b7-236a-4ac3-bb8e-5abcd431b52a";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Good Sleeper Counting Sheep Profile";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -630,6 +726,7 @@
 		};
 		B5CF632F1AD51F9E00D34155 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FA23A3D04297C6BD9444361 /* Pods-GoodSleeperCountingSheepTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Try_Sheep_Count.app/Try_Sheep_Count";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -652,6 +749,7 @@
 		};
 		B5CF63301AD51F9E00D34155 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D49172A4C34ECF76A539121 /* Pods-GoodSleeperCountingSheepTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Try_Sheep_Count.app/Try_Sheep_Count";
 				FRAMEWORK_SEARCH_PATHS = (

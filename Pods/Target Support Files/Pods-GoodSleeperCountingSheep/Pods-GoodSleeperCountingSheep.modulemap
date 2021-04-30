@@ -1,0 +1,6 @@
+framework module Pods_GoodSleeperCountingSheep {
+  umbrella header "Pods-GoodSleeperCountingSheep-umbrella.h"
+
+  export *
+  module * { export * }
+}

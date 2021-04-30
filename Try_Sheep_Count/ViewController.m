@@ -27,7 +27,7 @@ bool isFirstLoad = true;
     
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     
-//    interstitial = [self createAndLoadInterstitial];
+    interstitial = [self createAndLoadInterstitial];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -48,9 +48,9 @@ bool isFirstLoad = true;
         };
         
         scene.showAdmob = ^(){
-            dispatch_async(dispatch_get_main_queue(), ^{
-//                [self showAdmob];
-            });
+//            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showAdmob];
+//            });
         };
         
     }
@@ -118,8 +118,9 @@ bool isFirstLoad = true;
 
 
 - (GADInterstitial *)createAndLoadInterstitial {
-    GADInterstitial *interstitial = [[GADInterstitial alloc] init];
-    interstitial.adUnitID = @"ca-app-pub-2566742856382887/8779587052";
+    GADInterstitial *interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2566742856382887/8779587052"];
+//    GADInterstitial *interstitial = [[GADInterstitial alloc] init];
+//    interstitial.adUnitID = @"ca-app-pub-2566742856382887/8779587052";
     interstitial.delegate = self;
     [interstitial loadRequest:[GADRequest request]];
     return interstitial;
