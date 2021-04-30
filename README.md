@@ -31,6 +31,6 @@
 
 ## Screentshots
 
-![](ScreentShots/01.jpg)
-![](ScreentShots/02.jpg)
-![](ScreentShots/03.jpg)
+![](ScreenShots/01.jpg)
+![](ScreenShots/02.jpg)
+![](ScreenShots/03.jpg)
