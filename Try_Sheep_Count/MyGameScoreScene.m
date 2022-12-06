@@ -11,8 +11,8 @@
 #import "MyGameOverScene.h"
 
 @implementation MyGameScoreScene {
-    SKSpriteNode * gamePointSingleNode, *gamePointTenNode, *gamePointHunNode, *gamePointTHUNode;
-    SKSpriteNode * sheepSleepNode;
+    SKSpriteNode *gamePointSingleNode, *gamePointTenNode, *gamePointHunNode, *gamePointTHUNode;
+    SKSpriteNode *sheepSleepNode;
 }
 
 - (instancetype)initWithSize:(CGSize)size {
@@ -32,20 +32,20 @@
         
         [self addChild:cumulative];
         
-        SKTexture * texture1 = [SKTexture textureWithImageNamed:@"sheep_sleep1"];
-        SKTexture * texture2 = [SKTexture textureWithImageNamed:@"sheep_sleep2"];
-        SKTexture * texture3 = [SKTexture textureWithImageNamed:@"sheep_sleep3"];
-        SKTexture * texture4 = [SKTexture textureWithImageNamed:@"sheep_sleep4"];
-        SKTexture * texture5 = [SKTexture textureWithImageNamed:@"sheep_sleep5"];
+        SKTexture *texture1 = [SKTexture textureWithImageNamed:@"sheep_sleep1"];
+        SKTexture *texture2 = [SKTexture textureWithImageNamed:@"sheep_sleep2"];
+        SKTexture *texture3 = [SKTexture textureWithImageNamed:@"sheep_sleep3"];
+        SKTexture *texture4 = [SKTexture textureWithImageNamed:@"sheep_sleep4"];
+        SKTexture *texture5 = [SKTexture textureWithImageNamed:@"sheep_sleep5"];
         
         sheepSleepNode = [SKSpriteNode spriteNodeWithTexture:texture1];
         sheepSleepNode.anchorPoint = CGPointMake(0.5, 0.5);
-        sheepSleepNode.size = CGSizeMake(self.frame.size.width/2, self.frame.size.height/4.0*3);
-        sheepSleepNode.position = CGPointMake(self.size.width/4.0*3, self.frame.size.height/3);
+        sheepSleepNode.size = CGSizeMake(self.frame.size.width / 2, self.frame.size.height / 4.0 * 3);
+        sheepSleepNode.position = CGPointMake(self.size.width / 4.0 * 3, self.frame.size.height / 3);
         
         [self addChild:sheepSleepNode];
         
-        SKAction * sleepAction = [SKAction animateWithTextures:@[texture1, texture2, texture3, texture4, texture5] timePerFrame:0.3];
+        SKAction *sleepAction = [SKAction animateWithTextures:@[texture1, texture2, texture3, texture4, texture5] timePerFrame:0.3];
         
         [sheepSleepNode runAction:[SKAction repeatActionForever:sleepAction]];
         
@@ -54,28 +54,28 @@
 }
 
 - (void)update:(NSTimeInterval)currentTime {
-    if(self.updateSheepGameScore){
+    if (self.updateSheepGameScore) {
         int gamePointNodeWH = 60;
         
-        int gamePointX = self.frame.size.width/3;
-        int gamePointY = self.frame.size.height*2/8.0;
+        int gamePointX = self.frame.size.width / 3;
+        int gamePointY = self.frame.size.height * 2 / 8.0;
         
-        gamePointSingleNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:self.sheepGameScore%10]];
+        gamePointSingleNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:self.sheepGameScore % 10]];
         gamePointSingleNode.anchorPoint = CGPointMake(0, 0);
         gamePointSingleNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointSingleNode.position = CGPointMake(gamePointX, gamePointY);
         
-        gamePointTenNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore)/10%10]];
+        gamePointTenNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore) / 10 % 10]];
         gamePointTenNode.anchorPoint = CGPointMake(0, 0);
         gamePointTenNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointTenNode.position = CGPointMake(gamePointX - gamePointNodeWH, gamePointY);
         
-        gamePointHunNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore)/100%10]];
+        gamePointHunNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore) / 100 % 10]];
         gamePointHunNode.anchorPoint = CGPointMake(0, 0);
         gamePointHunNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointHunNode.position = CGPointMake(gamePointX - gamePointNodeWH*2, gamePointY);
         
-        gamePointTHUNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore)/1000%10]];
+        gamePointTHUNode = [SKSpriteNode spriteNodeWithTexture:[self getTimeTexture:(self.sheepGameScore) / 1000 % 10]];
         gamePointTHUNode.anchorPoint = CGPointMake(0, 0);
         gamePointTHUNode.size = CGSizeMake(gamePointNodeWH, gamePointNodeWH);
         gamePointTHUNode.position = CGPointMake(gamePointX - gamePointNodeWH*3, gamePointY);
@@ -92,18 +92,18 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     ((MyScene*)self.periousScene).showAdmob();
     
-    MyGameOverScene * myGameOverScene = [MyGameOverScene sceneWithSize:self.view.frame.size];
+    MyGameOverScene *myGameOverScene = [MyGameOverScene sceneWithSize:self.view.frame.size];
     myGameOverScene.scaleMode = self.scaleMode;
     myGameOverScene.periousScene = self.periousScene;
     myGameOverScene.delegate = self.delegate;
     
-    SKTransition * trans = [SKTransition flipHorizontalWithDuration:0.5];
+    SKTransition *trans = [SKTransition flipHorizontalWithDuration:0.5];
     [self.view presentScene:myGameOverScene transition:trans];
     
     [self removeFromParent];
 }
 
-- (SKTexture*)getTimeTexture:(int)time {
+- (SKTexture *)getTimeTexture:(int)time {
     SKTexture* texture;
     switch (time) {
         case 0:

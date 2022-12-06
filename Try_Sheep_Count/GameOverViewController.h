@@ -8,17 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-//@class ViewController;
-//@class BviewControllerDelegate;
-
 @protocol BviewControllerDelegate <NSObject>
+
 - (void)BviewcontrollerDidTapButton;
 - (void)BviewcontrollerDidTapBackToMenuButton;
+
 @end
 
 @interface GameOverViewController : UIViewController
-
-//@property int gameLevel;
 
 @property int gameScore;
 
@@ -33,7 +30,5 @@
 - (IBAction)backToMainMenuClick:(id)sender;
 
 @property (nonatomic, weak) id <BviewControllerDelegate> delegate;
-
-//@property (nonatomic, weak) ViewController* viewController;
 
 @end

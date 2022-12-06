@@ -9,10 +9,12 @@
 #import <SpriteKit/SpriteKit.h>
 
 @protocol returnToMySceneDelegate <NSObject>
--(void) startTimer;
+
+- (void)startTimer;
+
 @end
 
-@interface MyScene : SKScene<returnToMySceneDelegate>
+@interface MyScene : SKScene <returnToMySceneDelegate>
 
 typedef void(^gameOverDialog)(int);
 @property (atomic, copy) gameOverDialog onGameOver;
@@ -23,6 +25,6 @@ typedef void(^admob)();
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 
--(void)set;
+- (void)set;
 
 @end

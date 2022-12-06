@@ -11,11 +11,11 @@
 
 @interface MyGameScoreScene : SKScene
 
-@property (nonatomic) SKScene * periousScene;
+@property (nonatomic) SKScene *periousScene;
 @property (nonatomic) int sheepGameScore;
 @property (nonatomic) bool updateSheepGameScore;
 @property (nonatomic, assign) id<returnToMySceneDelegate> delegate;
 
-+(void)updateSheepGameScore;
++ (void)updateSheepGameScore;
 
 @end

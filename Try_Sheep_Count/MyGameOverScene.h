@@ -9,14 +9,12 @@
 #import <SpriteKit/SpriteKit.h>
 #import "MyScene.h"
 
-@interface MyGameOverScene : SKScene{
-//    id<returnToMySceneDelegate> delegate;
-}
+@interface MyGameOverScene : SKScene
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
-@property (nonatomic) SKSpriteNode * backgroundNode;
-@property (nonatomic) SKScene * periousScene;
+@property (nonatomic) SKSpriteNode *backgroundNode;
+@property (nonatomic) SKScene *periousScene;
 @property (nonatomic, assign) id<returnToMySceneDelegate> delegate;
 
 @end

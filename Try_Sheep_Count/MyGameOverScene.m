@@ -10,16 +10,16 @@
 #import "TextureHelper.h"
 
 @implementation MyGameOverScene {
-    SKSpriteNode * continueBtn;
-    SKSpriteNode * leaveBtn;
-    SKSpriteNode * sheepStandNode;
+    SKSpriteNode *continueBtn;
+    SKSpriteNode *leaveBtn;
+    SKSpriteNode *sheepStandNode;
 }
 
 int ccount;
 
 - (instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        SKSpriteNode * backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"bg02"];
+        SKSpriteNode *backgroundNode = [SKSpriteNode spriteNodeWithImageNamed:@"bg02"];
         
         backgroundNode.size = self.frame.size;
         backgroundNode.anchorPoint = CGPointMake(0, 0);
@@ -30,7 +30,7 @@ int ccount;
         continueBtn = [SKSpriteNode spriteNodeWithImageNamed:@"sheep_text2"];
         
         continueBtn.anchorPoint = CGPointMake(0, 0);
-        continueBtn.size = CGSizeMake(self.frame.size.width/3.0, self.frame.size.height/5.0);
+        continueBtn.size = CGSizeMake(self.frame.size.width / 3.0, self.frame.size.height / 5.0);
         continueBtn.position = CGPointMake(0, 0);
         
         [self addChild:continueBtn];
@@ -38,8 +38,8 @@ int ccount;
         sheepStandNode = [SKSpriteNode spriteNodeWithImageNamed:@"sheep1"];
         
         sheepStandNode.anchorPoint = CGPointMake(0.5, 0.5);
-        sheepStandNode.size = CGSizeMake(self.frame.size.width/5.0*3, self.frame.size.height/10.0*9);
-        sheepStandNode.position = CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0);
+        sheepStandNode.size = CGSizeMake(self.frame.size.width / 5.0 * 3, self.frame.size.height / 10.0 * 9);
+        sheepStandNode.position = CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0);
         
         [self addChild:sheepStandNode];
     }
@@ -67,7 +67,7 @@ int ccount;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch * touch = [touches anyObject];
+    UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     
     if (CGRectContainsPoint(continueBtn.calculateAccumulatedFrame, location)) {

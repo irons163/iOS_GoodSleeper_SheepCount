@@ -10,17 +10,16 @@
 #import "ViewController.h"
 #import "TextureHelper.h"
 
-@interface GameOverViewController ()<BviewControllerDelegate>
+@interface GameOverViewController () <BviewControllerDelegate>
 
 @end
 
 @implementation GameOverViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -51,8 +50,8 @@
     }];
 }
 
--(UIImage*)getNumberImage:(int)number{
-    UIImage* image;
+- (UIImage *)getNumberImage:(int)number {
+    UIImage *image;
     switch (number) {
         case 0:
             image = [TextureHelper timeImages][0];
